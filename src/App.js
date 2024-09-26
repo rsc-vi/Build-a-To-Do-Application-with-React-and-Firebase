@@ -6,7 +6,7 @@ import Todo from './components/Todo';
    <div className="App">
    <Todo />
    </div>
-  );
+  ); 
 }
 
 export default App;
