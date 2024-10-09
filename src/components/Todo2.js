@@ -1,7 +1,7 @@
 import React from 'react'
-import EditTodo from './EditTodo'
+import EditTodo2 from './EditTodo2'
 
-const Todo = () => {
+const Todo2 = () => {
 return (
 <>
  <div className="container">
@@ -32,7 +32,7 @@ return (
           <i>10/11/2022</i>
         </span>
         <span className=" float-end mx-3">
-          <EditTodo /></span>
+          <EditTodo2 /></span>
         <button
           type="button"
           className="btn btn-danger float-end">Delete
@@ -90,4 +90,4 @@ return (
 </>
   )
 }
-export default Todo
+export default Todo2
