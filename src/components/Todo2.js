@@ -6,42 +6,63 @@ return (
 <>
  <div className="container">
   <div className="row">
-    <div className="col-md-12">
+    <div id='main'className="col-md-12">
       <div className="card card-white">
         <div className="card-body">
-          <button
-            data-bs-toggle="modal"
-            data-bs-target="#addModal"
-            type="button"
-            className="btn btn-info">Add Todo
-          </button>
-
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#addModal"
+              type="button"
+              className="btn btn-info"> tarefa
+            </button>
 
     <div className="todo-list">
       <div className="todo-item">
         <hr />
         <span>
-          <div className="checker" >
-            <span className="" >
-              <input
-                type="checkbox"
-              />
-            </span>
-          </div>
-          &nbsp; Go hard or Go Home<br />
-          <i>10/11/2022</i>
-        </span>
-        <span className=" float-end mx-3">
-          <EditTodo2 /></span>
-        <button
-          type="button"
-          className="btn btn-danger float-end">Delete
-        </button>
+        <div className="checker" >
+              <span className="" >
+                <input
+                  type="checkbox"
+                />
+              </span>
+        </div>
+            &nbsp; abrir vs code<br />
+            <i>10/10/2024</i>
+          </span>
+          <span className=" float-end mx-3">
+            <EditTodo2 /></span>
+          <button
+            type="button"
+            className="btn btn-danger float-end">Delete
+          </button>
+              </div>
+              <div className="todo-item">
+        <hr />
+        <span>
+        <div className="checker" >
+              <span className="" >
+                <input
+                  type="checkbox"
+                />
+              </span>
+        </div>
+            &nbsp; go home <br />
+            <i>10/10/2024</i>
+          </span>
+          <span className=" float-end mx-3">
+            <EditTodo2 /></span>
+          <button
+            type="button"
+            className="btn btn-danger float-end">Delete
+          </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+
+      </div>   {/*and container*/}
+
     </div>
   </div>
 
