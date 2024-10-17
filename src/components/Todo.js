@@ -13,8 +13,19 @@ const Todo = () => {
   
   // let contador = 1;
   // contador ++;
+  useEffect(() => {
+    const getTodo = async () => {
+      await getDocs(collectionRef).then((todo) => {
+        let todoData = todo.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+         setTodo(todoData)
+        }).catch((err) => {
+          console.log(err);
+        })
+      }
+    getTodo()
+    }, [])
 
-  const [createTodo, setCreateTodo] = useState("")
+  const [createTodo, setCreateTodo] = useState("") // variavel que quero controlar
   console.log(createTodo)
 
   const submitTodo = async (e) => {
@@ -31,7 +42,6 @@ const Todo = () => {
       console.log(err);
     }
   }
-
   
 
 return (
@@ -47,30 +57,31 @@ return (
             type="button"
             className="btn btn-info">Add Todo 
           </button>
-
-
-    <div className="todo-list">
-      <div className="todo-item" >
-        <hr />
-        <span>
-          <div className="checker" >
-            <span className="" >
-              <input
-                type="checkbox"
-              />
-            </span>
-          </div>
-          &nbsp; Go hard or Go Home<br />
-          <i>10/11/2022</i>
-        </span>
-        <span className=" float-end mx-3">
-          <EditTodo /></span>
-        <button
-          type="button"
-          className="btn btn-danger float-end">Delete
-        </button>
+          {todos.map(({ todo, id }) =>
+            <div className="todo-list" key={id}>
+              <div className="todo-item">
+                <hr />
+                <span>
+                  <div className="checker" >
+                    <span className="" >
+                      <input
+                        type="checkbox"
+                      />
+                    </span>
+                  </div>
+                  &nbsp;{todo}<br />
+                  <i>10/11/2022</i>
+                </span>
+                <span className=" float-end mx-3">
+                  <EditTodo /></span>
+              <button
+                type="button"
+                className="btn btn-danger float-end">Delete
+              </button>
               </div>
             </div>
+          )}
+            
           </div>
         </div>
       </div>
@@ -110,12 +121,12 @@ return (
       />
   </div>
   <div className="modal-footer">
-  <button
-    className="btn btn-secondary"
-    data-bs-dismiss="modal">Fechar
-  </button>
+          <button
+            className="btn btn-secondary"
+            data-bs-dismiss="modal">Fechar
+          </button>
 
-  <button className="btn btn-primary">Criar tarefa</button>
+          <button className="btn btn-primary">Criar tarefa</button>
           </div>
         </div>
       </form>
