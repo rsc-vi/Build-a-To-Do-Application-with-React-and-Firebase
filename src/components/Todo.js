@@ -7,7 +7,7 @@ import EditTodo from './EditTodo'
 
 const Todo = () => {
   
-  const [todos, setTodo] = useState([])
+  const [todos, setTodo] = useState([todo])
 
   const collectionRef = collection(db, 'todo');
   
@@ -54,7 +54,7 @@ const Todo = () => {
       console.log(error)
     }
   }
-
+  
 return (
 <>
  <div className="container">
@@ -84,7 +84,7 @@ return (
                   <i>10/11/2022</i>
                 </span>
                 <span className=" float-end mx-3">
-                  <EditTodo /></span>
+                  <EditTodo todo={todo} id={id} /></span>
                   <button
                 type="button"
                 className="btn btn-danger float-end"
@@ -109,8 +109,8 @@ return (
    aria-labelledby="addModalLabel"
    aria-hidden="true">
   <div className="modal-dialog">
-  <form className="d-flex" onSubmit={submitTodo}> 
-    <div className="modal-content">
+      <form className="d-flex" onSubmit={submitTodo}> 
+      <div className="modal-content">
       <div className="modal-header">
   <h5
    className="modal-title"
