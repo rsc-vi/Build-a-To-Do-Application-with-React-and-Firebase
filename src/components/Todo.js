@@ -7,7 +7,7 @@ import EditTodo from './EditTodo'
 
 const Todo = () => {
   
-  const [todos, setTodo] = useState([todo])
+  const [todos, setTodo] = useState([])
 
   const collectionRef = collection(db, 'todo');
   
@@ -23,7 +23,7 @@ const Todo = () => {
         })
       }
     getTodo()
-    }, [])
+  }, [])
 
   const [createTodo, setCreateTodo] = useState("") // variavel que quero controlar
   console.log(createTodo)
@@ -42,6 +42,7 @@ const Todo = () => {
       console.log(err);
     }
   }
+
   const deleteTodo = async (id) => {
     try {
       const respota = window.confirm("Tem certeza que você deseja deletar esta tarefa?");
@@ -55,97 +56,97 @@ const Todo = () => {
     }
   }
   
-return (
-<>
- <div className="container">
-  <div className="row">
-    <div className="col-md-12">
-      <div className="card card-white">
-        <div className="card-body">
-          <button
-            data-bs-toggle="modal"
-            data-bs-target="#addModal"
-            type="button"
-            className="btn btn-info">Add Todo 
-          </button>
-          {todos.map(({ todo, id }) =>
-            <div className="todo-list" key={id}>
-              <div className="todo-item">
-                <hr />
-                <span>
-                  <div className="checker" >
-                    <span className="" >
-                      <input
-                        type="checkbox"
-                      />
-                    </span>
-                  </div>
-                  &nbsp;{todo}<br />
-                  <i>10/11/2022</i>
-                </span>
-                <span className=" float-end mx-3">
-                  <EditTodo todo={todo} id={id} /></span>
-                  <button
+  return (
+    <>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card card-white">
+            <div className="card-body">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#addModal"
                 type="button"
-                className="btn btn-danger float-end"
-                onClick={() => deleteTodo(id)}
-                  >Delete
-                </button>
+                className="btn btn-info">Add Todo 
+              </button>
+              {todos.map(({ todo, id }) =>
+                <div className="todo-list" key={id}>
+                  <div className="todo-item">
+                    <hr />
+                    <span>
+                      <div className="checker" >
+                        <span className="" >
+                          <input
+                            type="checkbox"
+                          />
+                        </span>
+                      </div>
+                      &nbsp;{todo}<br />
+                      <i>10/11/2022</i>
+                    </span>
+                    <span className=" float-end mx-3">
+                      <EditTodo todo={todo} id={id} /></span>
+                      <button
+                    type="button"
+                    className="btn btn-danger float-end"
+                    onClick={() => deleteTodo(id)}
+                      >Delete
+                    </button>
+                  </div>
+                </div>
+              )}
+                
               </div>
             </div>
-          )}
-            
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  {/* Modal */}
-  <div
-   className="modal fade"
-   id="addModal"
-   tabIndex="-1"
-   aria-labelledby="addModalLabel"
-   aria-hidden="true">
-  <div className="modal-dialog">
-      <form className="d-flex" onSubmit={submitTodo}> 
-      <div className="modal-content">
-      <div className="modal-header">
-  <h5
-   className="modal-title"
-   id="addModalLabel">
-   Adicionar tarefa
-  </h5>
+      {/* Modal */}
+      <div
+      className="modal fade"
+      id="addModal"
+      tabIndex="-1"
+      aria-labelledby="addModalLabel"
+      aria-hidden="true">
+      <div className="modal-dialog">
+          <form className="d-flex" onSubmit={submitTodo}> 
+          <div className="modal-content">
+          <div className="modal-header">
+      <h5
+      className="modal-title"
+      id="addModalLabel">
+      Adicionar tarefa
+      </h5>
 
-  <button
-     type="button"
-     className="btn-close"
-     data-bs-dismiss="modal"
-     aria-label="Close">
-  </button>
-  </div>
-  <div className="modal-body">
-    <input
-      type="text"
-      className="form-control"
-      placeholder="Ex: decrição da tarefa"
-      onChange={(e) => setCreateTodo(e.target.value)}
-      />
-  </div>
-  <div className="modal-footer">
-          <button
-            className="btn btn-secondary"
-            data-bs-dismiss="modal">Fechar
-          </button>
+      <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close">
+      </button>
+      </div>
+      <div className="modal-body">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Ex: decrição da tarefa"
+          onChange={(e) => setCreateTodo(e.target.value)}
+          />
+      </div>
+      <div className="modal-footer">
+              <button
+                className="btn btn-secondary"
+                data-bs-dismiss="modal">Fechar
+              </button>
 
-          <button className="btn btn-primary">Criar tarefa</button>
-          </div>
+              <button className="btn btn-primary">Criar tarefa</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </div>
-</>
+      </div>
+    </>
   )
 }
 export default Todo
